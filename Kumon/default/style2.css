@@ -1,0 +1,134 @@
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
+  
+  body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+    margin: 0;
+    background-color: #cddadf;
+  }
+
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 35px 100px;
+    background: #80cef5;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+  }
+  
+  .header .logo {
+    position: relative;
+  }
+  
+  .header .logo img {
+    height: 40px;
+    width: auto;
+    position: absolute;
+    top: -20px;
+    left: 0;
+  }
+  
+  /* Navbar Styling */
+  .navbar a {
+    position: relative;
+    font-size: 18px;
+    color: black;
+    font-weight: 600;
+    text-decoration: none;
+    margin-left: 40px;
+  }
+  
+  .navbar a::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: black;
+    transition: .3s;
+  }
+  
+  .navbar a:hover::before {
+    width: 100%;
+  }
+  /* Container for the dropdown menu */
+  .profile-dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* Hide the dropdown menu by default */
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 22px; /* Adjust to align under the profile icon */
+    right: 3;
+    background-color: white;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    z-index: 1000;
+    text-align: left;
+    min-width: 100px;
+  }
+  
+  /* Dropdown menu items */
+  .dropdown-menu a {
+    color: black;
+    padding: 10px;
+    text-decoration: none;
+    display: block;
+    font-size: 14px;
+    border-bottom: 1px solid #ddd; /* Add a separator between items */
+    text-align: left; /* Align text to the left */
+    margin: 0; /* Ensure no extra margin is added */
+  }
+  
+  /* Last item has no border */
+  .dropdown-menu a:last-child {
+    border-bottom: none;
+  }
+  
+  /* Hover effect for dropdown items */
+  .dropdown-menu a:hover {
+    background-color: #f1f1f1; /* Light gray */
+  }
+  
+  /* Show the dropdown menu on hover */
+  .profile-dropdown:hover .dropdown-menu {
+    display: block;
+  }
+  .image-text-container {
+    display: flex; /* Use flexbox to align image and text side by side */
+    align-items: center; /* Vertically center the content */
+    margin-top: 70px; /* Adjust as needed to align with your layout */
+}
+
+.img {
+    width: 600px; /* Keep the image size */
+    height: auto; /* Maintain the aspect ratio */
+    margin-left: -200px; /* Keep the original image position */
+}
+
+.text-content {
+    margin-left: 100px; /* Add space between the image and text */
+    color: black; /* Adjust text color */
+    font-size: 1.2em; /* Adjust font size */
+    line-height: 1.5; /* Improve text readability */
+}
+html {
+    scroll-behavior: smooth;
+}

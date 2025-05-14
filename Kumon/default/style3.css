@@ -1,0 +1,167 @@
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
+  
+  body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+    margin: 0;
+    background-color: #f0f0f0;
+  }
+
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 35px 100px;
+    background: #80cef5;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+  }
+  
+  .header .logo {
+    position: relative;
+  }
+  
+  .header .logo img {
+    height: 40px;
+    width: auto;
+    position: absolute;
+    top: -20px;
+    left: 0;
+  }
+  
+  /* Navbar Styling */
+  .navbar a {
+    position: relative;
+    font-size: 18px;
+    color: black;
+    font-weight: 600;
+    text-decoration: none;
+    margin-left: 40px;
+  }
+  
+  .navbar a::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: black;
+    transition: .3s;
+  }
+  
+  .navbar a:hover::before {
+    width: 100%;
+  }
+  /* Container for the dropdown menu */
+  .profile-dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* Hide the dropdown menu by default */
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 22px; /* Adjust to align under the profile icon */
+    right: 3;
+    background-color: white;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    z-index: 1000;
+    text-align: left;
+    min-width: 100px;
+  }
+  
+  /* Dropdown menu items */
+  .dropdown-menu a {
+    color: black;
+    padding: 10px;
+    text-decoration: none;
+    display: block;
+    font-size: 14px;
+    border-bottom: 1px solid #ddd; /* Add a separator between items */
+    text-align: left; /* Align text to the left */
+    margin: 0; /* Ensure no extra margin is added */
+  }
+  
+  /* Last item has no border */
+  .dropdown-menu a:last-child {
+    border-bottom: none;
+  }
+  
+  /* Hover effect for dropdown items */
+  .dropdown-menu a:hover {
+    background-color: #f1f1f1; /* Light gray */
+  }
+  
+  /* Show the dropdown menu on hover */
+  .profile-dropdown:hover .dropdown-menu {
+    display: block;
+  }
+  h1 {
+    font-size: 4em; /* Adjust font size as needed */
+    text-align: center;
+    color: black; /* Adjust color as needed */
+    margin-top: 120px;
+}
+
+.image-box-wrapper {
+    display: flex; /* Use flexbox to align items side by side */
+    justify-content: center; /* Center the containers horizontally */
+    gap: 150px; /* Add spacing between the containers */
+    margin-top: 40px; /* Optional: Add spacing from other elements */
+}
+
+.image-box {
+    display: flex; /* Use Flexbox for layout */
+    flex-direction: column; /* Stack the h2 above the image */
+    justify-content: center; /* Center the content horizontally */
+    align-items: center; /* Center the content vertically */
+    width: 550px; /* Set width for each container */
+    height: 550px; /* Set height for each container */
+    background-color: #cddadf; /* Optional: Add a background color */
+    border-radius: 10px; /* Optional: Add rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Add shadow */
+    margin-bottom: -90px;
+}
+
+.image-box h2 { 
+    margin-bottom: 10px;/* Space between the heading and the image */
+    font-size: 2em; /* Adjust font size as needed */
+    color: #333; /* Set the text color */
+    text-align: center; /* Center-align the heading */
+}
+
+.image-box img {
+    width: 300px; /* Set the image width */
+    height: 200px; /* Set the image height */
+    border-radius: 10px; /* Match the container's rounded corners */
+}
+.image-box-wrapper .image-box:hover .box img{
+    transform: scale(1.1);
+  }
+  html {
+    scroll-behavior: smooth;
+}
+p {
+  text-align: justify;
+  line-height: 1.6; /* Improves readability */
+  margin: 10px 0;  /* Adds spacing around the paragraph */
+  font-size: 16px; /* Adjusts the font size */
+  color: #333;     /* Sets a readable text color */
+}
+
+

@@ -1,0 +1,171 @@
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
+  
+  body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+    margin: 0;
+    background-color: #f0f0f0;
+  }
+
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 35px 100px;
+    background: #80cef5;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+  }
+  
+  .header .logo {
+    position: relative;
+  }
+  
+  .header .logo img {
+    height: 40px;
+    width: auto;
+    position: absolute;
+    top: -20px;
+    left: 0;
+  }
+  
+  /* Navbar Styling */
+  .navbar a {
+    position: relative;
+    font-size: 18px;
+    color: black;
+    font-weight: 600;
+    text-decoration: none;
+    margin-left: 40px;
+  }
+  
+  .navbar a::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: black;
+    transition: .3s;
+  }
+  
+  .navbar a:hover::before {
+    width: 100%;
+  }
+  /* Container for the dropdown menu */
+  .profile-dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* Hide the dropdown menu by default */
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 22px; /* Adjust to align under the profile icon */
+    right: 3;
+    background-color: white;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    z-index: 1000;
+    text-align: left;
+    min-width: 100px;
+  }
+  
+  /* Dropdown menu items */
+  .dropdown-menu a {
+    color: black;
+    padding: 10px;
+    text-decoration: none;
+    display: block;
+    font-size: 14px;
+    border-bottom: 1px solid #ddd; /* Add a separator between items */
+    text-align: left; /* Align text to the left */
+    margin: 0; /* Ensure no extra margin is added */
+  }
+  
+  /* Last item has no border */
+  .dropdown-menu a:last-child {
+    border-bottom: none;
+  }
+  
+  /* Hover effect for dropdown items */
+  .dropdown-menu a:hover {
+    background-color: #f1f1f1; /* Light gray */
+  }
+  
+  /* Show the dropdown menu on hover */
+  .profile-dropdown:hover .dropdown-menu {
+    display: block;
+  }
+  h2{
+    font-size: 50px;
+    margin-top: 80px;
+  }
+
+  form{
+    margin-top: 40px;
+  }
+
+
+  .error {
+    border: 2px solid red;
+}
+.error-message {
+    color: red;
+    font-size: 0.9em;
+}
+label span {
+    color: red;
+}
+input, textarea, select {
+    margin-bottom: 10px;
+    padding: 8px;
+    width: 100%;
+    box-sizing: border-box;
+}
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #0056b3;
+}
+
+.password-container {
+  position: relative;
+  width: 100%;
+}
+
+.password-container input {
+  width: 100%;
+  padding: 10px;
+  padding-right: 30px; /* Give space on the right side for the eye icon */
+  box-sizing: border-box;
+}
+
+.password-container i {
+  position: absolute;
+  top: 40%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 20px; /* Adjust the size as needed */
+}
+
