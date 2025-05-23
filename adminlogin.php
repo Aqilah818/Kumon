@@ -1,0 +1,104 @@
+<?php
+session_start(); // Start the session
+
+// If the user is already logged in, redirect to the admin info page
+if (isset($_SESSION['admin_id'])) {
+    header('Location: adminpage1.php');
+    exit();
+}
+
+// Include database configuration
+include('db.php');
+
+// Check if the form is submitted
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Get the submitted credentials
+    $admin_email = $_POST['admin_email'];
+    $password = $_POST['password'];
+    $remember_me = isset($_POST['remember_me']); // Check if "Remember Me" is checked
+
+    // Validate reCAPTCHA
+    $recaptcha_response = $_POST['g-recaptcha-response']; // reCAPTCHA response from the form
+    $recaptcha_secret = '6LfGabUqAAAAAFqqLsq7qE6DoR5WYnn7SMT-LizU'; // Your reCAPTCHA secret key
+    $recaptcha_url = 'https://www.google.com/recaptcha/api/siteverify';
+
+    // Send a POST request to Google's reCAPTCHA API
+    $response = file_get_contents($recaptcha_url . '?secret=' . $recaptcha_secret . '&response=' . $recaptcha_response);
+    $response_keys = json_decode($response, true);
+
+    if (!$response_keys['success']) {
+        // If reCAPTCHA validation fails
+        $error = "Please complete the reCAPTCHA verification.";
+    } else {
+        // Proceed with login only if reCAPTCHA is valid
+        $stmt = $conn->prepare("SELECT * FROM admin WHERE email = ? AND password = ?");
+        $stmt->bind_param("ss", $admin_email, $password); // 's' for strings
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            // If valid admin, store session and redirect
+            $admin = $result->fetch_assoc();
+            $_SESSION['admin_id'] = $admin['admin_ID'];
+            $_SESSION['admin_name'] = $admin['name']; // Optional: Store admin name
+
+            // If "Remember Me" is checked, set cookies
+            if ($remember_me) {
+                setcookie('admin_email', $admin_email, time() + (86400 * 30), "/"); // 30 days
+                setcookie('password', $password, time() + (86400 * 30), "/"); // For demonstration purposes
+            } else {
+                // Clear cookies if "Remember Me" is not checked
+                setcookie('admin_email', '', time() - 3600, "/");
+                setcookie('password', '', time() - 3600, "/");
+            }
+
+            // Redirect to the admin page
+            header('Location: adminpage1.php');
+            exit();
+        } else {
+            $error = "Invalid email or password.";
+        }
+    }
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="default/loginstyle.css">
+    <script src="toggle.js" defer></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+<body class="login-page">
+    <div class="login-container">
+        <h1>Admin Login</h1>
+        <form action="adminlogin.php" method="POST" class="login-form">
+            <label for="admin_email">Email:</label>
+            <input type="email" name="admin_email" required placeholder="Enter your email"
+                   value="<?php echo isset($_COOKIE['admin_email']) ? $_COOKIE['admin_email'] : ''; ?>"><br>
+
+            <label for="password">Password:</label>
+            <div class="password-container">
+                <input type="password" name="password" id="password" required placeholder="Enter your password"
+                       value="<?php echo isset($_COOKIE['password']) ? $_COOKIE['password'] : ''; ?>">
+                <i class='bx bx-hide' id="toggle-password"></i>
+            </div>
+            <div class="g-recaptcha" data-sitekey="6LfGabUqAAAAAG6sGhf7p21oAxQhRv85lRzoSOhd"></div>
+            <div class="extra-options">
+                <label>
+                    <input type="checkbox" name="remember_me" 
+                           <?php echo isset($_COOKIE['admin_email']) ? 'checked' : ''; ?>> Remember Me
+                </label>
+                <a href="forgotpassword.php" class="forgot-password">Forgot Password?</a>
+            </div>
+
+            <?php if (isset($error)) { echo "<p style='color:red;'>$error</p>"; } ?>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,147 @@
+/* Reset styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+html, body {
+    height: 100%; /* Ensure the page fills the viewport */
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    /* Background image settings */
+    background: url('kumon_cover.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+
+/* Form and content styling */
+h1 {
+    margin-bottom: 20px;
+    color: black;
+    font-size: 50px;
+}
+
+.login-form {
+    z-index: 1; /* Ensures it sits above the background */
+    max-width: 700px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-form input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+.icon i {
+    color: #000;
+    padding: 1rem 1.5rem;
+    background-color: rgba(250, 250, 250, 0.05);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+.icon i:hover {
+    color: rgb(255, 255, 255); /* Optional: Change color on hover */
+}
+.login-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.login-form button:hover {
+    background-color: #45a049;
+}
+.login-form.error {
+    border: 2px solid red; /* Highlight the box with a red border */
+    animation: shake 0.3s; /* Optional: Add a shaking effect */
+}
+/* Highlight input fields in red */
+input.error {
+    border: 2px solid red; /* Red border to indicate error */
+    background-color: #ffe6e6; /* Light red background for visibility (optional) */
+}
+
+/* Optional: Add focus styling for consistency */
+input.error:focus {
+    outline: none;
+    box-shadow: 0 0 5px red;
+}
+
+/* Style the error message */
+.error-message {
+    color: red;
+    font-weight: bold;
+    margin-top: 10px;
+    text-align: center;
+}
+.password-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-container input {
+    flex: 1;
+    padding-right: 40px; /* Space for the icon */
+}
+
+.password-container i {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.4rem; /* Increase or decrease this value for size adjustment */
+    cursor: pointer;
+    color: #888;
+}
+
+.password-container i:hover {
+    color: #333;
+}
+.extra-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.remember-me {
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Space between checkbox and text */
+    font-size: 0.9rem; /* Adjust font size for "Remember Me" text */
+}
+
+input[type="checkbox"] {
+    width: 16px; /* Adjust checkbox size */
+    height: 16px;
+    margin: 0; /* Remove extra space around the checkbox */
+}
+
+.forgot-password {
+    font-size: 0.9rem;
+    color: #007BFF;
+    text-decoration: none;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+

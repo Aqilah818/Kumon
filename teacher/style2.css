@@ -1,0 +1,313 @@
+/* Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  padding-top: 70px;
+  /* Enough space to push down below the header */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  /* Full viewport height */
+  margin: 0;
+  background-color: whitesmoke;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 35px 100px;
+  background: #80cef5;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+}
+
+.header .logo {
+  position: relative;
+}
+
+.header .logo img {
+  height: 40px;
+  width: auto;
+  position: absolute;
+  top: -20px;
+  left: 0;
+}
+
+.icon {
+  position: relative;
+  margin-left: auto;
+  /* Pushes the icon container to the right */
+}
+
+.icon a {
+  text-decoration: none;
+}
+
+/* Styling the icon */
+.icon i {
+  font-size: 24px;
+  color: black;
+  /* Set icon color to black */
+  transition: color 0.3s ease;
+  /* Smooth hover effect */
+}
+
+/* Hover effect for the icon */
+.icon i:hover {
+  color: rgb(255, 255, 255);
+  /* Optional: Change color on hover */
+}
+
+/* Style for the tooltip */
+.icon a[data-tooltip]::after {
+  content: attr(data-tooltip);
+  /* The text for the tooltip */
+  position: absolute;
+  top: 120%;
+  /* Tooltip appears below the icon */
+  left: 50%;
+  /* Center the tooltip horizontally relative to the icon */
+  transform: translateX(-50%);
+  /* Align tooltip horizontally */
+  background-color: #ffffff;
+  /* Tooltip background color */
+  color: #000000;
+  /* Tooltip text color */
+  font-size: 12px;
+  /* Tooltip font size */
+  padding: 5px 10px;
+  /* Spacing around the text */
+  border-radius: 5px;
+  /* Rounded corners */
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  /* Subtle shadow */
+  white-space: nowrap;
+  /* Prevents the text from wrapping */
+  z-index: 10;
+  opacity: 0;
+  /* Hidden by default */
+  pointer-events: none;
+  /* Prevent interactions */
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  /* Smooth tooltip appearance */
+}
+
+/* Make the tooltip visible on hover */
+.icon a[data-tooltip]:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+  /* Smooth appearance on hover */
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 80px;
+  /* Adjust to match the height of the header */
+  left: 0;
+  width: 200px;
+  height: calc(100% - 80px);
+  /* Fill remaining height below header */
+  background: #f0f0f0;
+  color: #ffffff;
+  padding-top: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  /* Remove unnecessary padding on the UL */
+}
+
+.sidebar ul li {
+  padding: 0;
+  /* Remove padding from LI */
+}
+
+.sidebar ul li a {
+  text-decoration: none;
+  color: black;
+  font-size: 16px;
+  display: flex;
+  /* Use flexbox for alignment */
+  align-items: center;
+  /* Vertically align icon and text */
+  padding: 15px 20px;
+  transition: background 0.3s ease, color 0.3s ease;
+  gap: 10px;
+  /* Add spacing between the icon and text */
+}
+
+.sidebar ul li a i {
+  font-size: 20px;
+  /* Set icon size */
+  color: black;
+  /* Set icon color */
+  transition: color 0.3s ease;
+  /* Optional hover effect */
+}
+
+.sidebar ul li a:hover i {
+  color: #535353;
+  /* Change icon color on hover */
+}
+
+
+.sidebar ul li a:hover {
+  background: #d2d5d8;
+  color: #535353;
+}
+
+/* Main Content */
+.content {
+  margin-left: 200px;
+  /* Leave space for the sidebar */
+  padding: 100px 20px 20px 20px;
+  /* Adjust padding to match header and sidebar */
+}
+
+/* Styling for non-navigable sidebar item */
+.sidebar ul li.non-navigable {
+  font-weight: bold;
+  /* Make it visually distinct */
+  font-size: larger;
+  color: #535353;
+  /* Dimmed color to indicate it's not clickable */
+  cursor: default;
+  /* Change cursor to default (non-clickable) */
+  padding: 10px 20px;
+  background: none;
+  /* No hover effect */
+  pointer-events: none;
+  /* Disable click interactions */
+}
+
+h1 {
+  position: sticky;
+  /* Makes it relative to the document flow */
+  color: #444;
+  /* Text color */
+  margin-right: 700px;
+  margin-top: -100px;
+  padding: 10px;
+  /* Optional padding for spacing inside the <h1> */
+  z-index: 1;
+  /* Keeps it above other elements if needed */
+  font-size: 40px;
+  /* Adjust font size for better visibility */
+  text-align: left;
+  /* Align text to the left */
+}
+
+.search-container {
+  justify-content: left;
+  margin: 20px 0;
+  width: 900px;
+  margin-right: 100px;
+}
+
+.search-bar {
+  width: 60%;
+  display: flex;
+  align-items: left;
+  border: 2px solid #ccc;
+  border-radius: 25px;
+  padding: 5px 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.search-bar input {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 25px;
+}
+
+.search-bar button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.search-bar button i {
+  font-size: 20px;
+  color: #555;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px;
+  background: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow-x: auto;
+  margin-bottom: 70px;
+  margin-right: 70px;
+}
+
+/* Table Styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th,
+td {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #ccc;
+}
+
+th {
+  background-color: #34495e;
+  color: #fff;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tr:hover {
+  background-color: #eaeaea;
+}
+
+/* Rank Highlight */
+h1 span {
+  color: #3498db;
+  font-weight: bold;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+
+  .sidebar li {
+    display: inline-block;
+    padding: 10px;
+  }
+
+  table {
+    font-size: 14px;
+  }
+}
