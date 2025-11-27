@@ -17,10 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $password = $_POST['password'];
     $remember_me = isset($_POST['remember_me']); // Check if "Remember Me" is checked
 
-    // Validate reCAPTCHA
-    $recaptcha_response = $_POST['g-recaptcha-response']; // reCAPTCHA response from the form
-    $recaptcha_secret = '6LfGabUqAAAAAFqqLsq7qE6DoR5WYnn7SMT-LizU'; // Your reCAPTCHA secret key
-    $recaptcha_url = 'https://www.google.com/recaptcha/api/siteverify';
+
 
     // Send a POST request to Google's reCAPTCHA API
     $response = file_get_contents($recaptcha_url . '?secret=' . $recaptcha_secret . '&response=' . $recaptcha_response);
