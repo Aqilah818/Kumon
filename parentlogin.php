@@ -13,10 +13,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $password = $_POST['password'];
     $remember_me = isset($_POST['remember_me']);
 
-    // reCAPTCHA verification
-    $recaptcha_response = $_POST['g-recaptcha-response'];
-    $recaptcha_secret = '6LfGabUqAAAAAFqqLsq7qE6DoR5WYnn7SMT-LizU';
-    $recaptcha_url = 'https://www.google.com/recaptcha/api/siteverify';
 
     $response = file_get_contents($recaptcha_url . '?secret=' . $recaptcha_secret . '&response=' . $recaptcha_response);
     $response_keys = json_decode($response, true);
